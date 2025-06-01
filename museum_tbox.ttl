@@ -1,0 +1,292 @@
+#################################################################
+###  Generated with the experimental alpha version of the TTL exporter of WebVOWL (version 1.1.7)  http://visualdataweb.de/webvowl/   ###
+#################################################################
+
+@prefix : 		<http://visualdataweb.org/newOntology/> .
+@prefix rdf: 		<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: 		<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: 		<http://www.w3.org/2002/07/owl#> .
+@prefix xsd: 		<http://www.w3.org/2001/XMLSchema#> .
+@prefix dc: 		<http://purl.org/dc/elements/1.1/> .
+@prefix wot: 		<http://xmlns.com/wot/0.1/> .
+@prefix vs: 		<http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix foaf: 		<http://xmlns.com/foaf/0.1/> .
+@prefix meu: 		<http://bike-csecu.com/datasets/culturalHeritage/tbox/> .
+@prefix crm: 		<http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix dbo: 		<http://dbpedia.org/ontology/> .
+@prefix qb: 		<http://purl.org/linked-data/cube#> .
+@prefix schema:     <https://schema.org/> .
+@base 			<http://bike-csecu.com/datasets/culturalHeritage/tbox/> .
+
+<http://bike-csecu.com/datasets/culturalHeritage/tbox/> rdf:type owl:Ontology;
+                                        dc:title "Museum_Onto"@en;
+                                        dc:description "An ontology for structuring museum objects"@en;
+                                        owl:versionInfo "V0"@en;
+                                        dc:creator "Rudra Pratap Deb Nath" . 
+#################################################################
+
+###  Class Definitions (Number of Classes) 16 ###
+#  --------------------------- Class  0------------------------- 
+meu:MuseumObject rdf:type owl:Class; 
+     rdfs:label "MuseumObject"@en . 
+#  --------------------------- Class  1------------------------- 
+crm:E57_Material rdf:type owl:Class; 
+              rdfs:label "It defines the materials of the objects"@en . 
+#  --------------------------- Class  2------------------------- 
+meu:ObjectType rdf:type owl:Class; 
+          rdfs:label "Informs whether it is related to ethnography or archeology"@en . 
+#  --------------------------- Class  3------------------------- 
+meu:CulturalRef rdf:type owl:Class; 
+                 rdfs:label "The origin of the object"@en . 
+#  --------------------------- Class  4------------------------- 
+dbo:EthnicGroup rdf:type owl:Class; 
+                 rdfs:label " An EthnicGroup"@en . 
+#  --------------------------- Class  5------------------------- 
+schema:Place rdf:type owl:Class; 
+            rdfs:label "A geography Place"@en . 
+#  --------------------------- Class  6------------------------- 
+schema:Country rdf:type owl:Class; 
+                rdfs:label "A country"@en . 
+#  --------------------------- Class  7------------------------- 
+schema:Continent rdf:type owl:Class; 
+                  rdfs:label "A Continent"@en . 
+#  --------------------------- Class  8------------------------- 
+meu:Category rdf:type owl:Class; 
+              rdfs:label "Category of an object, physical object or conceptual or artwork etc. "@en . 
+#  --------------------------- Class  9------------------------- 
+crm:E54_Dimension rdf:type owl:Class; 
+               rdfs:label "It defines the measurement of an object in a quantity type"@en . 
+#  --------------------------- Class  10------------------------- 
+crm:E58_Measurement_Unit rdf:type owl:Class; 
+      rdfs:label "Système International (SI) units, for example, cm, km, kg, etc."@en . 
+#  --------------------------- Class  11------------------------- 
+crm:Number rdf:type owl:Class; 
+            rdfs:label "It is a numeric value"@en . 
+#  --------------------------- Class  12------------------------- 
+qb:MeasureProperty rdf:type owl:Class; 
+                    rdfs:label "A MeasureProperty can be length, height, wide, etc."@en . 
+#  --------------------------- Class  13------------------------- 
+meu:TransactionType rdf:type owl:Class; 
+                     rdfs:label "Type of TransactionType. It can be acquisition, purchase, etc."@en . 
+#  --------------------------- Class  14------------------------- 
+meu:Date rdf:type owl:Class; 
+          rdfs:label "Use to define a date"@en . 
+#  --------------------------- Class  15------------------------- 
+crm:E39_Actor rdf:type owl:Class; 
+           rdfs:label "This class comprises people, either individually or in groups, who have the potential to perform intentional actions of kinds for which they can be held responsible."@en . 
+
+#  --------------------------- Class  16------------------------- 
+crm:E52_Time-Span rdf:type owl:Class; 
+           rdfs:label "This class comprises time-spans."@en . 
+
+meu:Measure rdf:type owl:Class;
+		   rdfs:label "measure in a specific dimension, length, width, etc."@en.
+
+
+
+###  Property Definitions (Number of Property) 35 ###
+
+
+meu:hasMeasure rdf:type owl:ObjectProperty;
+				rdfs:domain crm:E54_Dimension;
+				rdfs:range meu:Measure .
+
+
+#  --------------------------- Property 0------------------------- 
+crm:crm:P46_is_composed_of rdf:type owl:ObjectProperty ;
+                  rdfs:label "Connect between material and objects"@en; 
+                  rdfs:domain meu:MuseumObject;
+                  rdfs:range crm:E57_Material . 
+#  --------------------------- Property 1------------------------- 
+meu:objectType rdf:type owl:ObjectProperty ;
+         rdfs:label "objectType"@en; 
+         rdfs:domain meu:MuseumObject;
+         rdfs:range meu:ObjectType . 
+#  --------------------------- Property 2------------------------- 
+meu:objectNumber rdf:type owl:DatatypeProperty ;
+               rdfs:label "object identifier"@en; 
+               rdfs:domain meu:MuseumObject;
+               rdfs:range rdfs:Literal;
+			   owl:sameAs dc:identifier;
+			   owl:sameAs crm:P1_is_identified_by. 
+#  --------------------------- Property 3------------------------- 
+rdfs:label rdf:type owl:DatatypeProperty ;
+            rdfs:label "name of the material"@en; 
+            rdfs:domain crm:E57_Material;
+            rdfs:range rdfs:Literal . 
+#  --------------------------- Property 4------------------------- 
+rdfs:label rdf:type owl:DatatypeProperty ;
+            rdfs:label "Name of the object"@en; 
+            rdfs:domain meu:MuseumObject;
+            rdfs:range rdfs:Literal . 
+#  --------------------------- Property 5------------------------- 
+meu:objectName rdf:type owl:DatatypeProperty ;
+          rdfs:label "Dispaly name or title of the object"@en; 
+          rdfs:domain meu:MuseumObject;
+          rdfs:range rdfs:Literal;
+	      owl:sameAs dc:title . 
+#  --------------------------- Property 6------------------------- 
+dc:description rdf:type owl:DatatypeProperty ;
+                rdfs:label "Original description of the object"@en; 
+                rdfs:domain meu:MuseumObject;
+                rdfs:range rdfs:Literal . 
+#  --------------------------- Property 7------------------------- 
+meu:hasCulturalRef rdf:type owl:ObjectProperty ;
+                    rdfs:label "origin of the object"@en; 
+                    rdfs:domain meu:MuseumObject;
+                    rdfs:range meu:CulturalRef . 
+				
+#  --------------------------- Property 8------------------------- 
+dbo:ethnicGroup rdf:type owl:ObjectProperty ;
+                 rdfs:label "Name of the ethnic group the object came from"@en; 
+                 rdfs:domain meu:CulturalRef;
+                 rdfs:range dbo:EthnicGroup . 
+				 
+#  --------------------------- Property 35------------------------- 
+crm:P4_has_time-span rdf:type owl:ObjectProperty ;
+                 rdfs:label "The time-span of the object"@en; 
+                 rdfs:domain meu:CulturalRef;
+                 rdfs:range crm:E52_Time-Span . 
+				 
+#  --------------------------- Property 35------------------------- 
+meu:cultureName rdf:type owl:DatatypeProperty ;
+                 rdfs:label "name of the culture of object"@en; 
+                 rdfs:domain meu:CulturalRef;
+                 rdfs:range rdfs:Literal . 
+
+#  --------------------------- Property 36------------------------- 
+rdfs:label rdf:type owl:DatatypeProperty ;
+                 rdfs:label "The value of time period"@en; 
+                 rdfs:domain crm:E52_Time-Span;
+                 rdfs:range rdfs:Literal . 
+#  --------------------------- Property 9------------------------- 
+meu:hasGeoRef rdf:type owl:ObjectProperty ;
+               rdfs:label "origin of geography of the object"@en; 
+               rdfs:domain meu:CulturalRef;
+               rdfs:range schema:Place . 
+#  --------------------------- Property 10------------------------- 
+schema:countryOfOrigin rdf:type owl:ObjectProperty ;
+         rdfs:label "countryOfOrigin"@en; 
+         rdfs:domain schema:Place;
+         rdfs:range schema:Country . 
+#  --------------------------- Property 11------------------------- 
+rdfs:label rdf:type owl:DatatypeProperty ;
+            rdfs:label "identifier"@en; 
+            rdfs:domain schema:Place;
+            rdfs:range rdfs:Literal . 
+#  --------------------------- Property 12------------------------- 
+schema:address rdf:type owl:DatatypeProperty ;
+                rdfs:label "schema:address"@en; 
+                rdfs:domain schema:Place;
+                rdfs:range rdfs:Literal . 
+#  --------------------------- Property 13------------------------- 
+meu:inContinent rdf:type owl:ObjectProperty ;
+                 rdfs:label "inContinent"@en; 
+                 rdfs:domain schema:Country;
+                 rdfs:range schema:Continent . 
+#  --------------------------- Property 14------------------------- 
+rdfs:label rdf:type owl:DatatypeProperty ;
+            rdfs:label "rdfs:label"@en; 
+            rdfs:domain schema:Country;
+            rdfs:range rdfs:Literal . 
+#  --------------------------- Property 15------------------------- 
+rdfs:label rdf:type owl:DatatypeProperty ;
+                     rdfs:label "rdfs:label"@en; 
+                     rdfs:domain meu:ObjectType;
+                     rdfs:range rdfs:Literal . 
+#  --------------------------- Property 16------------------------- 
+meu:hasCategory rdf:type owl:ObjectProperty ;
+                 rdfs:label "hasCategory"@en; 
+                 rdfs:domain meu:MuseumObject;
+                 rdfs:range meu:Category . 
+#  --------------------------- Property 17------------------------- 
+meu:categoryIdentifier rdf:type owl:DatatypeProperty ;
+               rdfs:label "category identifier"@en; 
+               rdfs:domain meu:Category;
+               rdfs:range rdfs:Literal;
+			   owl:sameAs dc:identifier .
+#  --------------------------- Property 18------------------------- 
+rdfs:label rdf:type owl:DatatypeProperty ;
+            rdfs:label "category name"@en; 
+            rdfs:domain meu:Category;
+            rdfs:range rdfs:Literal . 
+#  --------------------------- Property 19------------------------- 
+crm:P43_has_dimension rdf:type owl:ObjectProperty ;
+         rdfs:label "the dimension of the object"@en; 
+         rdfs:domain meu:MuseumObject;
+         rdfs:range crm:E54_Dimension . 
+#  --------------------------- Property 20------------------------- 
+crm:P91_has_unit rdf:type owl:ObjectProperty ;
+             rdfs:label "crm:hasUnit"@en; 
+             rdfs:domain meu:Measure;
+             rdfs:range crm:E58_Measurement_Unit . 
+#  --------------------------- Property 21------------------------- 
+qb:measure rdf:type owl:ObjectProperty ;
+            rdfs:label "a measure like length, depth, etc."@en; 
+            rdfs:domain meu:Measure;
+            rdfs:range qb:MeasureProperty . 
+#  --------------------------- Property 22------------------------- 
+rdfs:label rdf:type owl:DatatypeProperty ;
+            rdfs:label "Dimension value in text"@en; 
+            rdfs:domain crm:E54_Dimension;
+            rdfs:range rdfs:Literal . 
+#  --------------------------- Property 23------------------------- 
+rdfs:label rdf:type owl:DatatypeProperty ;
+            rdfs:label "measure property name"@en; 
+            rdfs:domain qb:MeasureProperty;
+            rdfs:range rdfs:Literal . 
+#  --------------------------- Property 24------------------------- 
+crm:P90_has_value rdf:type owl:ObjectProperty ;
+              rdfs:label "the value of a measure"@en; 
+              rdfs:domain meu:Measure;
+              rdfs:range crm:Number . 
+#  --------------------------- Property 25------------------------- 
+meu:transactionType rdf:type owl:ObjectProperty ;
+                     rdfs:label "Transaction type"@en; 
+                     rdfs:domain meu:MuseumObject;
+                     rdfs:range meu:TransactionType . 
+#  --------------------------- Property 26------------------------- 
+rdfs:label rdf:type owl:DatatypeProperty ;
+            rdfs:label "Name of the transaction type"@en; 
+            rdfs:domain meu:TransactionType;
+            rdfs:range rdfs:Literal . 
+#  --------------------------- Property 27------------------------- 
+meu:acquisitionDate rdf:type owl:ObjectProperty ;
+                     rdfs:label "When the object is acquired "@en; 
+                     rdfs:domain meu:MuseumObject;
+                     rdfs:range meu:Date . 
+#  --------------------------- Property 28------------------------- 
+meu:registrationDate rdf:type owl:ObjectProperty ;
+                      rdfs:label "When the object is registered"@en; 
+                      rdfs:domain meu:MuseumObject;
+                      rdfs:range meu:Date . 
+#  --------------------------- Property 29------------------------- 
+meu:arrivalDate rdf:type owl:ObjectProperty ;
+                 rdfs:label "When the object is arrived to the meuseum"@en; 
+                 rdfs:domain meu:MuseumObject;
+                 rdfs:range meu:Date . 
+#  --------------------------- Property 30------------------------- 
+meu:donor rdf:type owl:ObjectProperty ;
+           rdfs:label "Who donate the object"@en; 
+           rdfs:domain meu:MuseumObject;
+           rdfs:range crm:E39_Actor . 
+#  --------------------------- Property 31------------------------- 
+meu:acquirer rdf:type owl:ObjectProperty ;
+              rdfs:label "Who acquire the object"@en; 
+              rdfs:domain meu:MuseumObject;
+              rdfs:range crm:E39_Actor . 
+#  --------------------------- Property 32------------------------- 
+meu:seller rdf:type owl:ObjectProperty ;
+            rdfs:label "Who sell the object"@en; 
+            rdfs:domain meu:MuseumObject;
+            rdfs:range crm:E39_Actor . 
+#  --------------------------- Property 33------------------------- 
+meu:collector rdf:type owl:ObjectProperty ;
+               rdfs:label "Who collect the object "@en; 
+               rdfs:domain meu:MuseumObject;
+               rdfs:range crm:E39_Actor . 
+			   
+meu:locatedIn rdf:type owl:ObjectProperty ;
+               rdfs:label "Where the object is now "@en; 
+               rdfs:domain meu:MuseumObject;
+               rdfs:range schema:Museum .
